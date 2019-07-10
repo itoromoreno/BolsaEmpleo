@@ -11,14 +11,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Selección de Parroquia</title>
+<title>SelecciÃ³n de Parroquia</title>
 </head>
 <body>
 
-<h1>Bolsa de Empleo</h1>
-<h2>Selección de Artesano</h2>
-<h3>Selección de Servicio</h3>
+	<h1>Bolsa de Empleo</h1>
+	<h2>SelecciÃ³n de Artesano</h2>
+	<h3>SelecciÃ³n de Servicio</h3>
 	<%
+		String parroquia;
+		try {
+			parroquia = request.getParameter("Parroquia");
+		} catch (Exception e) {
+			parroquia = " ";
+		}
 		ArrayList<Servicio> servicios = null;
 		try {
 			Servicio servicio = new Servicio();
@@ -27,18 +33,26 @@
 			System.out.print("Hubo un error al obtener los datos: " + e);
 		}
 	%>
-	<select>
-		<option>Elegir servicio</option>
-		<%
-			for (Servicio servicio: servicios) {
-		%>
-		<option value="<%=servicio.getIdServicio()%>>"><%=servicio.getNombreServicio()%>
-		</option>
-		<%
-			}
-		%>
-	</select>
-	
-	<a href="SeleccionArtesano.jsp">Seleccionar Artesano</a>
+	<form method="post" action="SeleccionServicio.jsp">
+		<select>
+			<option>Elegir servicio</option>
+			<%
+				for (Servicio servicio : servicios) {
+			%>
+			<option value="<%=servicio.getIdServicio()%>>"><%=servicio.getNombreServicio()%>
+			</option>
+			<%
+				}
+			%>
+		</select>
+		<h1><%=parroquia%></h1>
+		<br /> <input type="submit"
+			value="Registrar requerimiento de servicio" />
+	</form>
+
+	<FORM NAME="buttonbar">
+		<INPUT TYPE="button" VALUE="Regresar a seleccionar parroquia"
+			onClick="history.back()">
+	</FORM>
 </body>
 </html>
