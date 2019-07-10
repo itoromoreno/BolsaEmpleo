@@ -15,30 +15,41 @@
 </head>
 <body>
 
-<h1>Bolsa de Empleo</h1>
-<h2>Selección de Artesano</h2>
-<h3>Selección de Parroquia</h3>
+	<h1>Bolsa de Empleo</h1>
+	<h2>Selección de Artesano</h2>
+	<h3>Selección de Parroquia</h3>
 	<%
+	String canton;
+	try {
+		canton = request.getParameter("Canton");
+	} catch (Exception e) {
+		canton = " ";
+	}
 		ArrayList<Parroquia> parroquias = null;
 		try {
 			Parroquia parroquia = new Parroquia();
-			parroquias = parroquia.listarParroquias();
+			parroquias = parroquia.listarParroquias(canton);
 		} catch (Exception e) {
 			System.out.print("Hubo un error al obtener los datos: " + e);
 		}
 	%>
-	<select>
-		<option>Elegir parroquia</option>
-		<%
-			for (Parroquia parroquia : parroquias) {
-		%>
-		<option value="<%=parroquia.getIdParroquia()%>>"><%=parroquia.getNombreParroquia()%>
-		</option>
-		<%
-			}
-		%>
-	</select>
+
+	<form method="post" action="SeleccionServicio.jsp">
+		<select>
+			<option>Elegir parroquia</option>
+			<%
+				for (Parroquia parroquia : parroquias) {
+			%>
+			<option value="<%=parroquia.getIdParroquia()%>>"><%=parroquia.getNombreParroquia()%>
+			</option>
+			<%
+				}
+			%>
+		</select> <br/> <input type="submit" value="Seleccionar Servicio"/>
+	</form>
 	
-	<a href="SeleccionServicio.jsp">Seleccionar Servicio</a>
+	<form action="SeleccionCanton.jsp">
+	<input type="submit" value="Regresar a seleccionar cantón"/>
+	</form>
 </body>
 </html>

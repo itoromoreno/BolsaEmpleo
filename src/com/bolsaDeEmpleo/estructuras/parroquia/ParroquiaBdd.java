@@ -8,9 +8,10 @@ import com.bolsaDeEmpleo.bdd.Bdd;
 
 public class ParroquiaBdd {
 
-	public ArrayList<Parroquia> consultarParroquias() throws SQLException {
+	public ArrayList<Parroquia> consultarParroquias(String canton) throws SQLException {
 		ArrayList<Parroquia> parroquias = new ArrayList<Parroquia>();
-		ResultSet resultadoConsulta = Bdd.ejecutarConsulta("SELECT * FROM adparroquia");
+		String consulta = "SELECT * FROM adparroquia where IDCANTON = " + canton;
+		ResultSet resultadoConsulta = Bdd.ejecutarConsulta(consulta);
 		while (resultadoConsulta.next()) {
 			Parroquia parroquia = new Parroquia();
 			try {

@@ -54,8 +54,8 @@ public class Parroquia {
 		this.idCanton = idCanton;
 	}
 	
-	public ArrayList<Parroquia> listarParroquias() throws SQLException {
+	public ArrayList<Parroquia> listarParroquias(String canton) throws SQLException {
 		ParroquiaBdd datos = new ParroquiaBdd();
-		return datos.consultarParroquias();
+		return datos.consultarParroquias(canton);
 	}
 }
