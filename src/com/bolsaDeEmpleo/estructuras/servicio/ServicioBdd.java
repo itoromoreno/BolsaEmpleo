@@ -10,7 +10,7 @@ public class ServicioBdd {
 
 	public ArrayList<Servicio> consultarServicios() throws SQLException {
 		ArrayList<Servicio> servicios = new ArrayList<Servicio>();
-		ResultSet resultadoConsulta = Bdd.ejecutarConsulta("Select * from servicio");
+		ResultSet resultadoConsulta = Bdd.ejecutarConsulta("Select * from servicio order by nombreServicio");
 		while(resultadoConsulta.next()) {
 			Servicio servicio = new Servicio();
 			try {

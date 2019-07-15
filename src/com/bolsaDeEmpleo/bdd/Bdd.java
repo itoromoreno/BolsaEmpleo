@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class Bdd {
 	final static String DB_URL = "jdbc:mysql://localhost/bolsa_de_empleo?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	final static String USER = "root";
-	final static String PASS = "root";
+	final static String PASS = "Mysql21121996*";
 
 	public static Connection conectar() {
 		Connection conexion = null;
@@ -29,5 +29,11 @@ public class Bdd {
 		Statement sentencia = conexion.createStatement();
 		resultado = sentencia.executeQuery(consulta);
 		return resultado;
+	}
+	
+	public static int ejecutarActualizacion(String consulta) throws SQLException {
+		Connection conexion = conectar();
+		Statement sentencia = conexion.createStatement();
+		return sentencia.executeUpdate(consulta);
 	}
 }

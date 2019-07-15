@@ -10,7 +10,7 @@ public class CantonBdd {
 
 	public ArrayList<Canton> consultarCantones() throws SQLException {
 		ArrayList<Canton> cantones = new ArrayList<Canton>();
-		ResultSet resultadoConsulta = Bdd.ejecutarConsulta("SELECT * FROM adcanton where IDPROVINCIA = 17");
+		ResultSet resultadoConsulta = Bdd.ejecutarConsulta("SELECT * FROM adcanton where IDPROVINCIA = 17 order by nombrecanton");
 		while (resultadoConsulta.next()) {
 			Canton canton = new Canton();
 			try {
