@@ -49,8 +49,8 @@ public class RequerimientoServicio {
 		return requerimientoServicio.obtenerCantidadDeArtesanos(idParroquia, idServicio);
 	}
 	
-	public static boolean registrarRequerimientoServicio(String idParroquia, String idServicio) throws SQLException {
+	public static boolean registrarRequerimientoServicio(String idParroquia, String idServicio, String comentario) throws SQLException {
 		RequerimientoServicioBdd requerimientoServicio = new RequerimientoServicioBdd();
-		return requerimientoServicio.registrarRequerimiento(idParroquia, idServicio);
+		return requerimientoServicio.registrarRequerimiento(idParroquia, idServicio, comentario);
 	}
 }

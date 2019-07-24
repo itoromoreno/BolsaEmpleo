@@ -21,12 +21,13 @@ public class RequerimientoServicioBdd {
 		return cantidadArtesanos;
 	}
 	
-	public boolean registrarRequerimiento(String idParroquia, String idServicio) throws SQLException {		
+	public boolean registrarRequerimiento(String idParroquia, String idServicio, String comentario) throws SQLException {		
 		int cantidadIngresos = 0;
 
 		cantidadIngresos = Bdd.ejecutarActualizacion("insert into requerimientoservicio values(0,NOW(),"
 				+ idParroquia + ","
-				+ idServicio +")");
+				+ idServicio + ","
+				+ comentario + ")");
 
 		return cantidadIngresos > 0;
 	}

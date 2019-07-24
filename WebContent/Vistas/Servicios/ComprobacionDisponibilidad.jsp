@@ -74,6 +74,10 @@
 					<%=cantidadArtesanos%>
 					artesanos que ofrecen el servicio solicitado
 				</h4>
+				<label name="label comentario">Ingresar comentario:</label>
+				<br/>
+				<textarea name="Comentario" cols="75" rows="5"></textarea>
+				<br/><br/>
 				<input type="text" value=<%=parroquia%> name="Parroquia" hidden>
 				<input type="text" value=<%=servicio%> name="Servicio" hidden>
 				<input type="submit" value="Registrar Requerimiento de Servicio"

@@ -42,9 +42,10 @@
 	<%
 		String parroquia = request.getParameter("Parroquia");
 		String servicio = request.getParameter("Servicio");
+		String comentario = request.getParameter("Comentario");
 		boolean registroCorrecto = false;
 		try {
-			registroCorrecto = RequerimientoServicio.registrarRequerimientoServicio(parroquia, servicio);
+			registroCorrecto = RequerimientoServicio.registrarRequerimientoServicio(parroquia, servicio, comentario);
 		} catch (Exception e) {
 			System.out.print(e);
 		}
