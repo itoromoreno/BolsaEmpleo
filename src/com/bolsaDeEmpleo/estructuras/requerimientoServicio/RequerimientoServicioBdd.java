@@ -10,10 +10,12 @@ public class RequerimientoServicioBdd {
 
 	public int obtenerCantidadDeArtesanos(String idparroquia, String idServicio) throws SQLException {
 		int cantidadArtesanos = 0;
-
-		ResultSet resultadoConsulta = Bdd.ejecutarConsulta("select count(*) from personaservicio where idServicio="
+		
+		String query = "select count(*) from personaservicio where idServicio="
 				+ idServicio + " and CODIGOPERSONA in (select CODIGOPERSONA from perpersona where IDPARROQUIA="
-				+ idparroquia + ")");
+				+ idparroquia + ")";
+
+		ResultSet resultadoConsulta = Bdd.ejecutarConsulta(query);
 
 		while (resultadoConsulta.next())
 			cantidadArtesanos = resultadoConsulta.getInt(1);
@@ -24,10 +26,12 @@ public class RequerimientoServicioBdd {
 	public boolean registrarRequerimiento(String idParroquia, String idServicio, String comentario) throws SQLException {		
 		int cantidadIngresos = 0;
 
-		cantidadIngresos = Bdd.ejecutarActualizacion("insert into requerimientoservicio values(0,NOW(),"
+		String query = "insert into berequerimiento values(0,NOW(),null,1,'"
+				+ comentario + "',"
 				+ idParroquia + ","
-				+ idServicio + ","
-				+ comentario + ")");
+				+ idServicio + ")";
+		
+		cantidadIngresos = Bdd.ejecutarActualizacion(query);
 
 		return cantidadIngresos > 0;
 	}
